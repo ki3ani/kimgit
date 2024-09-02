@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import ThemeToggle from "./components/ThemeToggle";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <header className="p-4 bg-gray-100 dark:bg-gray-900">
+          <ThemeToggle /> {/* Add the ThemeToggle component */}
+        </header>
+        {children}
+      </body>
     </html>
   );
 }
