@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: ./kimgit
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./kimgit:/code
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=1
+
+  frontend:
+    build:
+      context: ./kimgitfront
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development

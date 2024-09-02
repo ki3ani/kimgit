@@ -14,7 +14,7 @@ class IssueAPITests(APITestCase):
     def test_list_issues(self):
         response = self.client.get(self.list_url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.data), 1)  # Since we return a random issue
+        self.assertIsInstance(response.data, dict)  # Since we return a single issue, it should be a dict
 
     def test_create_issue(self):
         data = {
